@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/css/output.css">
+    <link rel="stylesheet" href="./dist/css/styles.css">
+    <link rel="stylesheet" href="./dist/css/jquery-ui.min.css">
+    <title>Todolist</title>
+</head>
+
+<body>
+    <div
+        class="w-screen h-screen flex items-center justify-center py-8 bg-gradient-to-b from-underwater-top to-underwater-bottom">
+        <div class="w-11/12 h-full flex flex-col">
+            <div class="header flex justify-between pb-3">
+                <div class="flex flex-col gap-y-1">
+                    <h1 class="text-2xl lg:text-3xl text-white">Todolist App</h1>
+                    <h2 class="text-sm md:text-base lg:text-lg text-white">
+                        Create your unlimited daily tasks with your custom defined category.
+                    </h2>
+                </div>
+                <div class="h-3/5 flex flex-row items-center gap-x-2 md:gap-x-4 px-4 md:px-10 py-2 shadow-xl bg-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 hidden text-red-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-sm text-green-600">Task Created!</span>
+                </div>
+            </div>
+
+            <div class="body flex-1 flex flex-row md:gap-x-2 overflow-y-hidden">
+                <div class="list-container flex-1 flex flex-col p-8 bg-gray-200">
+                    <div class="list-header flex justify-between pb-4 border-b border-gray-400">
+                        <div>Category: <span>5</span></div>
+                        <div class="flex gap-x-6">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="create-list-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Create">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="edit-list-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Edit">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                </path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="delete-list-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Delete">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="list-form">
+                        <form class="search-list-form relative mt-4">
+                            <div class="h-full absolute right-2 flex items-center pl-4 text-gray-600 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <input type="text" name="search"
+                                class="w-full flex items-center p-2 text-sm border-none border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-primary"
+                                placeholder="Search" />
+                        </form>
+                        <form
+                            class="create-list-form flex flex-col lg:flex-row lg:flex-wrap justify-between lg:items-end gap-x-4 gap-y-4 mt-4">
+                            <div class="flex-auto">
+                                <label class="block mb-2 text-sm text-gray-600" for="listname">Name</label>
+                                <input type="text" name="listname"
+                                    class="w-full block p-2 text-sm border-none rounded focus:outline-none focus:ring-1 focus:ring-primary"
+                                    placeholder="eg. Sport" />
+                            </div>
+                            <div class="flex-auto">
+                                <label class="block mb-2 text-sm text-gray-600" for="description">Description</label>
+                                <input type="text" name="description"
+                                    class="w-full block p-2 text-sm border-none rounded focus:outline-none focus:ring-1 focus:ring-primary"
+                                    placeholder="eg. Sport to try in 2022" />
+                            </div>
+                            <div class="grow-0">
+                                <button
+                                    class="w-full px-6 py-2 text-sm rounded text-white bg-primary duration-150 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2 hover:bg-primary-hover transition">Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="list-content myscrollbar mt-8 overflow-y-auto">
+                        <div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 pr-2">
+                            <div
+                                class="p-4 bg-primary text-white border-l-8 border-primary hover:border-black cursor-pointer">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-lg">Content box</div>
+                                    <div class="progress-circle relative w-12 h-12">
+                                        <div
+                                            class="flex justify-center items-center w-full h-full text-center text-white text-sm border-6 border-white border-opacity-20 rounded-full">
+                                            45%</div>
+                                        <div class="pc_curve absolute top-0 left-0 w-full h-full">
+                                            <div
+                                                class="pc_curve_half1 absolute w-full h-full border-6 border-white rounded-full">
+                                            </div>
+                                            <div
+                                                class="pc_curve_half2 absolute w-full h-full border-6 border-white rounded-full transform rotate-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi beatae deserunt.
+                                </div>
+                            </div>
+                            <div
+                                class="active p-4 text-white bg-primary border-l-8 border-primary hover:border-black cursor-pointer">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-lg">Content box</div>
+                                    <div class="progress-circle relative w-12 h-12">
+                                        <div
+                                            class="flex justify-center items-center w-full h-full text-center text-white text-sm border-6 border-white border-opacity-20 rounded-full">
+                                            45%</div>
+                                        <div class="pc_curve absolute top-0 left-0 w-full h-full">
+                                            <div
+                                                class="pc_curve_half1 absolute w-full h-full border-6 border-white rounded-full">
+                                            </div>
+                                            <div
+                                                class="pc_curve_half2 absolute w-full h-full border-6 border-white rounded-full transform rotate-0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-2 text-sm">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi beatae deserunt.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chevron-left w-6 relative md:hidden">
+                    <div
+                        class="w-10 h-10 hover:h-11 hover:w-11 absolute top-1/2 right-0 flex items-center justify-center bg-primary rounded-full shadow-xl cursor-pointer duration-150 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="chevron-right hidden md:hidden relative w-6">
+                    <div
+                        class="w-10 h-10 hover:h-11 hover:w-11 absolute top-1/2 flex items-center justify-center bg-primary cursor-pointer duration-150 rounded-full shadow-xl transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 text-white w-8" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="task-container flex-1 hidden md:flex md:flex-col p-8 bg-gray-200">
+                    <div class="task-header flex justify-between pb-4 border-b border-gray-400">
+                        <div>Task: <span>5</span></div>
+                        <div class="flex flex-row gap-x-6">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="create-task-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Create">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="edit-task-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Edit">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                </path>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="delete-task-button w-6 h-6 hover:text-primary cursor-pointer" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" title="Delete">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="task-form">
+                        <form class="search-task-form relative mt-4">
+                            <div class="h-full absolute right-2 flex items-center pl-4 text-gray-600 cursor-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                            <input type="text" name="search"
+                                class="w-full p-2 flex items-center pl-2 border-none focus:outline-none focus:ring-1 focus:ring-primary text-sm border-gray-300 rounded"
+                                placeholder="Search" />
+                        </form>
+                        <form
+                            class="create-task-form flex flex-col lg:flex-row justify-between lg:items-end lg:gap-x-4 gap-y-4 mt-4">
+                            <div class="flex-auto">
+                                <label class="block mb-2 text-sm text-gray-600" for="listname">Name</label>
+                                <input type="text" name="listname"
+                                    class="w-full block p-2 text-sm border-none rounded focus:outline-none focus:ring-1 focus:ring-primary"
+                                    placeholder="eg. to swim every weekend" />
+                            </div>
+                            <div class="grow-0">
+                                <button
+                                    class="w-full px-6 py-2 text-sm text-white bg-primary rounded duration-150 ease-in-out focus:outline-none focus:ring-1 focus:ring-primary focus:ring-offset-2 hover:bg-primary-hover transition">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="task-content myscrollbar flex-1 flex items-center mt-8 overflow-y-auto">
+                        <div class="hidden text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mb-2 mx-auto" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z">
+                                </path>
+                            </svg>
+                            <p>No Task here! Create New One!</p>
+                        </div>
+                        <div class="w-full h-full flex flex-col gap-y-4 pr-1 lg:pr-2 xl:pr-4">
+                            <div class="task-item flex items-center justify-between gap-x-2 lg:gap-x-4 xl:gap-x-6">
+                                <div
+                                    class="active flex-1 flex border-l-4 lg:border-l-6 border-primary cursor-pointer hover:border-black">
+                                    <div
+                                        class="flex items-center lg:pl-2 lg:pr-4 pl-1 pr-2 bg-primary text-sm text-white">
+                                        100
+                                    </div>
+                                    <div class="flex-1 p-2 pl-4 bg-white text-sm xl:text-base">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ut.
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-8 h-8 text-primary hover:text-primary-hover" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="task-item flex justify-between items-center gap-x-2 lg:gap-x-4 xl:gap-x-6">
+                                <div
+                                    class="flex-1 flex border-l-4 lg:border-l-6 border-primary cursor-pointer hover:border-black">
+                                    <div
+                                        class="flex items-center lg:pl-2 lg:pr-4 pl-1 pr-2 bg-primary text-sm text-white">
+                                        100
+                                    </div>
+                                    <div class="flex-1 p-2 pl-4 bg-white xl:text-basetext-sm">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, ut.
+                                    </div>
+                                </div>
+                                <div class="cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="w-8 h-8 text-primary hover:text-primary-hover" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./dist/js/jquery-3.6.1.js"></script>
+    <script src="./dist/js/jquery-ui.min.js"></script>
+    <script src="./dist/js/script.js"></script>
+</body>
+
+</html>
